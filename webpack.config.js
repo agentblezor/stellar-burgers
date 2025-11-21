@@ -54,7 +54,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-    new Dotenv()
+    new Dotenv({ path: './.env', systemvars: true })
   ],
   resolve: {
     extensions: [
