@@ -6,22 +6,18 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 
-import { rootReducer, RootState } from './rootReducer';
+const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools: process.env.NODE_ENV !== 'production',
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: []
-      }
-    })
+  devTools: process.env.NODE_ENV !== 'production'
 });
+
+export type RootState = ReturnType<typeof rootReducer>;
 
 export type AppDispatch = typeof store.dispatch;
 
-export const useDispatch = () => dispatchHook<AppDispatch>();
+export const useDispatch: () => AppDispatch = () => dispatchHook();
 export const useSelector: TypedUseSelectorHook<RootState> = selectorHook;
 
 export default store;

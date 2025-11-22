@@ -1,18 +1,7 @@
 import { setCookie, getCookie } from './cookie';
 import { TIngredient, TOrder, TOrdersData, TUser } from './types';
 
-const getApiUrl = () => {
-  if (typeof window !== 'undefined') {
-    // В браузере используем относительный путь через прокси
-    return process.env.BURGER_API_URL || '/api';
-  }
-  // На сервере используем полный URL
-  return (
-    process.env.BURGER_API_URL || 'https://norma.education-services.ru/api'
-  );
-};
-
-const URL = getApiUrl();
+const URL = process.env.BURGER_API_URL;
 
 const checkResponse = <T>(res: Response): Promise<T> =>
   res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
@@ -82,34 +71,13 @@ type TOrdersResponse = TServerResponse<{
   data: TOrder[];
 }>;
 
-export const getIngredientsApi = () => {
-  const apiUrl = URL;
-  const fullUrl = `${apiUrl}/ingredients`;
-
-  if (!apiUrl) {
-    return Promise.reject(new Error('BURGER_API_URL не настроен'));
-  }
-
-  return fetch(fullUrl)
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-      return checkResponse<TIngredientsResponse>(res);
-    })
+export const getIngredientsApi = () =>
+  fetch(`${URL}/ingredients`)
+    .then((res) => checkResponse<TIngredientsResponse>(res))
     .then((data) => {
       if (data?.success) return data.data;
       return Promise.reject(data);
-    })
-    .catch((error) => {
-      if (error instanceof TypeError && error.message === 'Failed to fetch') {
-        throw new Error(
-          `Не удалось подключиться к серверу ${fullUrl}. Проверьте подключение к интернету и настройки CORS.`
-        );
-      }
-      throw error;
     });
-};
 
 export const getFeedsApi = () =>
   fetch(`${URL}/orders/all`)

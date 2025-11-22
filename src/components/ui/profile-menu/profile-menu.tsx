@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import clsx from 'clsx';
 import styles from './profile-menu.module.css';
 import { NavLink } from 'react-router-dom';
 import { ProfileMenuUIProps } from './type';
@@ -7,55 +6,39 @@ import { ProfileMenuUIProps } from './type';
 export const ProfileMenuUI: FC<ProfileMenuUIProps> = ({
   pathname,
   handleLogout
-}) => {
-  const isProfileActive = pathname === '/profile';
-  const isOrdersActive = pathname.startsWith('/profile/orders');
-
-  return (
-    <>
-      <NavLink
-        to={'/profile'}
-        className={({ isActive }) =>
-          clsx(
-            'text text_type_main-medium text_color_inactive pt-4 pb-4',
-            styles.link,
-            {
-              [styles.link_active]: isActive || isProfileActive
-            }
-          )
-        }
-        end
-      >
-        Профиль
-      </NavLink>
-      <NavLink
-        to={'/profile/orders'}
-        className={({ isActive }) =>
-          clsx(
-            'text text_type_main-medium text_color_inactive pt-4 pb-4',
-            styles.link,
-            {
-              [styles.link_active]: isActive || isOrdersActive
-            }
-          )
-        }
-      >
-        История заказов
-      </NavLink>
-      <button
-        className={clsx(
-          'text text_type_main-medium text_color_inactive pt-4 pb-4',
-          styles.button
-        )}
-        onClick={handleLogout}
-      >
-        Выход
-      </button>
-      <p className='pt-20 text text_type_main-default text_color_inactive'>
-        {pathname === '/profile'
-          ? 'В этом разделе вы можете изменить свои персональные данные'
-          : 'В этом разделе вы можете просмотреть свою историю заказов'}
-      </p>
-    </>
-  );
-};
+}) => (
+  <>
+    <NavLink
+      to={'/profile'}
+      className={({ isActive }) =>
+        `text text_type_main-medium text_color_inactive pt-4 pb-4 ${
+          styles.link
+        } ${isActive ? styles.link_active : ''}`
+      }
+      end
+    >
+      Профиль
+    </NavLink>
+    <NavLink
+      to={'/profile/orders'}
+      className={({ isActive }) =>
+        `text text_type_main-medium text_color_inactive pt-4 pb-4 ${
+          styles.link
+        } ${isActive ? styles.link_active : ''}`
+      }
+    >
+      История заказов
+    </NavLink>
+    <button
+      className={`text text_type_main-medium text_color_inactive pt-4 pb-4 ${styles.button}`}
+      onClick={handleLogout}
+    >
+      Выход
+    </button>
+    <p className='pt-20 text text_type_main-default text_color_inactive'>
+      {pathname === '/profile'
+        ? 'В этом разделе вы можете изменить свои персональные данные'
+        : 'В этом разделе вы можете просмотреть свою историю заказов'}
+    </p>
+  </>
+);

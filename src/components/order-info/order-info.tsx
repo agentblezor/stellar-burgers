@@ -1,34 +1,25 @@
-import { FC, useMemo, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useSelector } from '../../services/store';
-import { getOrderByNumberApi } from '@api';
-import { TOrder, TIngredient } from '@utils-types';
+import { FC, useMemo } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
+import { TIngredient } from '@utils-types';
 
 export const OrderInfo: FC = () => {
-  const { number } = useParams<{ number: string }>();
-  const ingredients =
-    useSelector((state) => state.ingredients?.ingredients) || [];
-  const [orderData, setOrderData] = useState<TOrder | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  /** TODO: взять переменные orderData и ingredients из стора */
+  const orderData = {
+    createdAt: '',
+    ingredients: [],
+    _id: '',
+    status: '',
+    name: '',
+    updatedAt: 'string',
+    number: 0
+  };
 
-  useEffect(() => {
-    if (number) {
-      getOrderByNumberApi(Number(number))
-        .then((data) => {
-          if (data.success && data.orders.length > 0) {
-            setOrderData(data.orders[0]);
-          }
-        })
-        .catch(() => {})
-        .finally(() => setIsLoading(false));
-    }
-  }, [number]);
+  const ingredients: TIngredient[] = [];
 
   /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {
-    if (!orderData || !ingredients.length || isLoading) return null;
+    if (!orderData || !ingredients.length) return null;
 
     const date = new Date(orderData.createdAt);
 
@@ -68,7 +59,7 @@ export const OrderInfo: FC = () => {
     };
   }, [orderData, ingredients]);
 
-  if (!orderInfo || isLoading) {
+  if (!orderInfo) {
     return <Preloader />;
   }
 
