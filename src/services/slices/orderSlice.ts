@@ -2,10 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import type { TOrder, TConstructorIngredient } from '@utils-types';
 import { orderBurgerApi } from '@api';
 import type { RootState } from '../rootReducer';
-<<<<<<< HEAD
-=======
 import { clearConstructor } from './constructorSlice';
->>>>>>> main
 
 export type TOrderState = {
   order: TOrder | null;
@@ -23,11 +20,7 @@ export const createOrder = createAsyncThunk<
   TOrder,
   void,
   { state: RootState; rejectValue: string }
-<<<<<<< HEAD
->('order/create', async (_, { getState, rejectWithValue }) => {
-=======
 >('order/create', async (_, { getState, rejectWithValue, dispatch }) => {
->>>>>>> main
   const state = getState();
   const { bun, ingredients } = state.burgerConstructor;
 
@@ -42,10 +35,7 @@ export const createOrder = createAsyncThunk<
   ];
   try {
     const data = await orderBurgerApi(ingredientsIds);
-<<<<<<< HEAD
-=======
     dispatch(clearConstructor());
->>>>>>> main
     return data.order;
   } catch (e) {
     return rejectWithValue(

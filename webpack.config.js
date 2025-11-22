@@ -55,16 +55,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-<<<<<<< HEAD
-    new Dotenv({ path: './.env', systemvars: true })
-=======
-    new Dotenv(),
+    new Dotenv({ path: './.env', systemvars: true }),
     new webpack.DefinePlugin({
       'process.env.BURGER_API_URL': JSON.stringify(
         process.env.BURGER_API_URL || 'https://norma.education-services.ru/api'
       )
     })
->>>>>>> main
   ],
   resolve: {
     extensions: [

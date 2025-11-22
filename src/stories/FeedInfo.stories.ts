@@ -4,10 +4,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: 'Example/FeedInfo',
   component: FeedInfoUI,
-<<<<<<< HEAD
-=======
-
->>>>>>> main
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen'
