@@ -1,6 +1,9 @@
 import { setCookie, getCookie } from './cookie';
 import { TIngredient, TOrder, TOrdersData, TUser } from './types';
 
+<<<<<<< HEAD
+const URL = process.env.BURGER_API_URL || '';
+=======
 const getApiUrl = () => {
   if (typeof window !== 'undefined') {
     // В браузере используем относительный путь через прокси
@@ -13,6 +16,7 @@ const getApiUrl = () => {
 };
 
 const URL = getApiUrl();
+>>>>>>> main
 
 const checkResponse = <T>(res: Response): Promise<T> =>
   res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
@@ -83,6 +87,13 @@ type TOrdersResponse = TServerResponse<{
 }>;
 
 export const getIngredientsApi = () => {
+<<<<<<< HEAD
+  if (!URL) {
+    return Promise.reject(new Error('BURGER_API_URL не настроен'));
+  }
+  return fetch(`${URL}/ingredients`)
+    .then((res) => checkResponse<TIngredientsResponse>(res))
+=======
   const apiUrl = URL;
   const fullUrl = `${apiUrl}/ingredients`;
 
@@ -97,6 +108,7 @@ export const getIngredientsApi = () => {
       }
       return checkResponse<TIngredientsResponse>(res);
     })
+>>>>>>> main
     .then((data) => {
       if (data?.success) return data.data;
       return Promise.reject(data);
