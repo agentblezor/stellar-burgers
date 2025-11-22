@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from '../../services/store';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
 import { createOrder, clearOrder } from '../../services/slices/orderSlice';
+<<<<<<< HEAD
 import { clearConstructor } from '../../services/slices/constructorSlice';
+=======
+>>>>>>> main
 
 export const BurgerConstructor: FC = () => {
   const dispatch = useDispatch();
@@ -27,7 +30,10 @@ export const BurgerConstructor: FC = () => {
 
   const closeOrderModal = () => {
     dispatch(clearOrder());
+<<<<<<< HEAD
     dispatch(clearConstructor());
+=======
+>>>>>>> main
   };
 
   const price = useMemo(() => {
