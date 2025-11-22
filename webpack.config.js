@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
@@ -54,7 +55,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-    new Dotenv()
+    new Dotenv(),
+    new webpack.DefinePlugin({
+      'process.env.BURGER_API_URL': JSON.stringify(
+        process.env.BURGER_API_URL || 'https://norma.education-services.ru/api'
+      )
+    })
   ],
   resolve: {
     extensions: [
@@ -89,6 +95,14 @@ module.exports = {
     static: path.join(__dirname, './dist'),
     compress: true,
     historyApiFallback: true,
-    port: 4000
+    port: 4000,
+    proxy: {
+      '/api': {
+        target: 'https://norma.education-services.ru',
+        changeOrigin: true,
+        secure: false,
+        logLevel: 'debug'
+      }
+    }
   }
 };
