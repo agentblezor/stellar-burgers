@@ -2,8 +2,9 @@
   margin: 0 auto;
   width: 640px;
 }
+
 .number {
-  text-align: center;
+  text-align: left;
 }
 
 .status {
@@ -11,6 +12,12 @@
 }
 
 .header {
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.title {
   margin: 0;
 }
 
@@ -71,6 +78,7 @@
   justify-content: flex-start;
   align-items: center;
 }
+
 .total {
   margin-left: auto;
 }
