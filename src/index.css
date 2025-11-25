@@ -1,3 +1,35 @@
+:root {
+  --colors-interface-accent: #4c4cff;
+}
+
 body {
   margin: 0;
+}
+
+.common_button {
+  color: var(--colors-interface-accent) !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.common_button svg {
+  display: none !important;
+}
+
+.common_button::before,
+.common_button::after {
+  display: none !important;
+}
+
+/* Глобальные мобильные стили */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
 }

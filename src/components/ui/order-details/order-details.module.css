@@ -3,12 +3,26 @@
 }
 
 .title {
+  color: var(--text-primary-color);
   text-shadow:
-    0px 0px 16px rgba(51, 51, 255, 0.25),
-    0px 0px 8px rgba(51, 51, 255, 0.25),
-    0px 4px 32px rgba(51, 51, 255, 0.5);
+    0px 0px 16px rgba(76, 76, 255, 0.25),
+    0px 0px 8px rgba(76, 76, 255, 0.25),
+    0px 4px 32px rgba(76, 76, 255, 0.5);
 }
 
 .text {
   color: #8585ad;
+}
+
+@media (max-width: 768px) {
+  .img {
+    margin: 40px 0;
+    width: 120px;
+    height: 120px;
+  }
+
+  .title {
+    font-size: 80px;
+    line-height: 1.2;
+  }
 }

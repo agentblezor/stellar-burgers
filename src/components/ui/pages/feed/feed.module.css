@@ -32,3 +32,44 @@
   overflow-x: hidden;
   width: 580px;
 }
+
+@media (max-width: 768px) {
+  .containerMain {
+    padding: 0 16px;
+  }
+
+  .titleBox {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  .main {
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+  }
+
+  .columnOrders {
+    width: 100%;
+  }
+
+  .columnInfo {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .containerMain {
+    padding: 0 8px;
+  }
+
+  .titleBox {
+    padding: 0 8px;
+  }
+
+  .main {
+    gap: 16px;
+  }
+}
