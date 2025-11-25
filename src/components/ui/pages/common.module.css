@@ -46,3 +46,37 @@
   color: #ff0000;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .wrapCenter {
+    width: 100%;
+    max-width: 480px;
+    padding: 0 16px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 8px;
+  }
+
+  .wrapCenter {
+    padding: 0 8px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .form div {
+    text-align: center;
+  }
+}

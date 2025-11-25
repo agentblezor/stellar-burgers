@@ -14,3 +14,23 @@
   width: 100%;
   max-width: 536px;
 }
+
+@media (max-width: 768px) {
+  .element {
+    margin-right: 0;
+  }
+
+  .element_fullwidth {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .element {
+    margin-bottom: 12px;
+  }
+
+  .element_fullwidth {
+    margin-left: 8px;
+  }
+}

@@ -19,3 +19,33 @@
   height: 100%;
   overflow: hidden;
 }
+
+@media (max-width: 768px) {
+  .containerMain {
+    padding: 0 16px;
+  }
+
+  .main {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .title {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .containerMain {
+    padding: 0 8px;
+  }
+
+  .main {
+    gap: 16px;
+  }
+
+  .title {
+    padding: 0 8px;
+  }
+}

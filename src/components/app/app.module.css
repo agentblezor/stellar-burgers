@@ -26,3 +26,17 @@
 .detailHeader {
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .detailPageWrap {
+    margin: 80px auto;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .detailPageWrap {
+    margin: 60px auto;
+    padding: 0 8px;
+  }
+}

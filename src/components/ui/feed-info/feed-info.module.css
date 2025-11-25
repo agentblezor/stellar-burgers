@@ -32,3 +32,34 @@
 .content {
   text-align: left;
 }
+
+@media (max-width: 768px) {
+  .columns {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .column {
+    min-width: 100%;
+  }
+
+  .list {
+    max-height: none;
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .list {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .content {
+    font-size: 14px;
+  }
+}
